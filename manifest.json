@@ -1,0 +1,17 @@
+{
+    "manifest_version": 3,
+    "name": "Pomodoro Timer",
+    "version": "1.0",
+    "description": "Timer that boosts your productivity!",
+    "icons": {
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+    },
+    "action": {
+        "default icon": "icon.png",
+        "default_title": "Pomodoro Timer",
+        "default_popup": "popup/popup.html"
+    },
+    "permissions": ["storage"]
+} 
