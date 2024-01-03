@@ -1,9 +1,13 @@
 let tasks = [];
 
 function updateTime() {
-    chrome.storage.local.get(["timer"], (res) => {
+    chrome.storage.local.get(["timer", "isRunning", "timeOption"], (res) => {
         const time = document.getElementById("time");
-        const minutes = `${25 - Math.ceil(res.timer / 60)}`.padStart(2, "0");
+        if (res.timer === 0 && res.isRunning === false) {
+            startTimerBtn.textContent = "Start Timer";
+        }
+
+        const minutes = `${res.timeOption - Math.ceil(res.timer / 60)}`.padStart(2, "0");
         let seconds = '00';
         if (res.timer % 60 != 0) {
             seconds = `${60 - (res.timer % 60)}`.padStart(2, "0");
@@ -16,6 +20,7 @@ updateTime();
 setInterval(updateTime, 1000)
 
 const startTimerBtn = document.getElementById("startTimer");
+
 startTimerBtn.addEventListener("click", () => {
     chrome.storage.local.get(["isRunning"], (res) => {
         chrome.storage.local.set({
