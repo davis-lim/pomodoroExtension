@@ -62,6 +62,7 @@ function renderTask(taskLen) {
     const text = document.createElement("input")
     text.type = "text"
     text.placeholder = "Enter a task";
+    text.className = "taskInput";
     text.value = tasks[taskLen];
     text.addEventListener("change", () => {
         tasks[taskLen] = text.value;
@@ -71,6 +72,7 @@ function renderTask(taskLen) {
     const deleteBtn = document.createElement("input");
     deleteBtn.type = "button";
     deleteBtn.value = "X"
+    deleteBtn.className = "deleteBtn"
     deleteBtn.addEventListener("click", () => {
         deleteTask(taskLen);
     })
